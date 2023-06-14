@@ -15,7 +15,7 @@ public class app {
     	Stack[] CountryStack = new Stack[8];   //Problem 2
     	LinkedList Above5Magnitude = new LinkedList(); //Problem 3
     	//Adding Data
-		String path = "C:\\Users\\faraz\\eclipse-workspace\\summerAssignment\\dataset-PBL.xlsx";
+		String path = "C:\\Users\\faraz\\OneDrive\\Desktop\\summerAssignment\\dataset-PBL.xlsx";
     	
     	File file = new File(path);
     	
@@ -39,6 +39,8 @@ public class app {
     	System.out.println("Solving Problem One: Biggest Earthquakes between 2009 and 2013");
     	//Problem 1 Output
     	BiggestEarthquakes=BiggestEarthQuakeSort(data);
+    	 System.out.println();
+         
     	BiggestEarthquakes.PrintAll();
     	System.out.println();
     	System.out.println();
@@ -46,9 +48,10 @@ public class app {
     	
     	System.out.println("Solving Problem Two: Recent 5 Earthquakes from Each Country");
     	//Problem 2 Output
+    	System.out.println();
+         
     	CountryStack=RecentEarthquakes(data);
     	
-    	System.out.println();
     	System.out.println();
     	
     	System.out.println("Solving Problem Three: Most Recent Earthquakes above 5 Magnitude");
@@ -153,15 +156,18 @@ public class app {
 		
 		for (Stack stack : Stack) {
             Node topNode = stack.peek();
-            if (topNode != null && topNode.Magnitude > 5) {
-                LL.addAtStart(topNode);
+             if (topNode != null && topNode.Magnitude > 5) {
+                LL.addAtStart(topNode.Year,topNode.Magnitude,topNode.Country);
             }
         }
-
+		
+		System.out.println();
         // Display the linked list of most recent earthquakes
         System.out.println("The Most Recent Earthquakes Above Magnitude 5:");
+        
         for (Node node =LL.head;node!=null;node=node.next) {
-            System.out.println(node.Year + " | Magnitude: " + node.Magnitude + " | Country: " + node.Country);
+             	System.out.println(node);
+            
         }
 		
 		return LL;
